@@ -5,17 +5,20 @@ class ApplicationController < Sinatra::Base
     Todo.all.to_json
   end
 
-  # Make new todo from params
   post '/todo' do
-    Todo.all.to_json
+    todo = Todo.create(body: params[:body])
+    todo.to_json
   end
-  # Find todo with params
+
   patch '/todo/:id' do
-    Todo.all.to_json
+    todo = Todo.find(params[:id])
+    todo.update(category: Category.find(params[:category]))
+    todo.to_json
   end
-  
-  # Find todo with params
+
   delete '/todo/:id' do
-    Todo.all.to_json
+    todo = Todo.find(params[:id])
+    todo.destroy
+    todo.to_json
   end
 end
