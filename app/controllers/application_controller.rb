@@ -1,8 +1,12 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
-  get '/todo' do
+  get '/todos' do
     Todo.all.to_json
+  end
+
+  get '/categories' do
+    Category.all.to_json
   end
 
   post '/todo' do
