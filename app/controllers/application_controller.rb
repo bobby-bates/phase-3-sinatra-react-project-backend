@@ -9,18 +9,18 @@ class ApplicationController < Sinatra::Base
     Category.all.to_json
   end
 
-  post '/todo' do
-    todo = Todo.create(body: params[:body])
+  post '/todos' do
+    todo = Todo.create(body: params[:body], category_id: params[:category_id])
     todo.to_json
   end
 
-  patch '/todo/:id' do
+  patch '/todos/:id' do
     todo = Todo.find(params[:id])
-    todo.update(category: Category.find(params[:category]))
+    todo.update(body: todo.body)
     todo.to_json
   end
 
-  delete '/todo/:id' do
+  delete '/todos/:id' do
     todo = Todo.find(params[:id])
     todo.destroy
     todo.to_json
