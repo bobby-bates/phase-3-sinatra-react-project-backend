@@ -1,3 +1,4 @@
+[front-end repo:]: https://github.com/bobby-bates/phase-3-sinatra-react-project-frontend
 # Phase 3 Project Guidelines
 
 ## Learning Goals
